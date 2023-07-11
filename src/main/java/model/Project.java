@@ -25,7 +25,10 @@ public class Project {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
+    public Project(){
+        this.createdAt = new Date();
+        this.updatedAt = new Date();
+    }
     @Override
     public String toString() {
         return "Projects [id=" + id + ", name=" + name + ", description=" + description + ", createdAt=" + createdAt
