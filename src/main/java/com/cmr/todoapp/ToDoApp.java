@@ -5,7 +5,10 @@
 package com.cmr.todoapp;
 
 import controller.ProjectController;
+import controller.TaskController;
+import java.util.Date;
 import model.Project;
+import model.Task;
 
 /**
  *
@@ -14,13 +17,5 @@ import model.Project;
 public class ToDoApp {
     public static void main(String[] args) {
         
-        ProjectController controller = new ProjectController();
-        
-        Project project = new Project();
-        
-        project.setName("projeto teste");
-        project.setDescription("Testando");
-        
-        controller.save(project);
     }
 }

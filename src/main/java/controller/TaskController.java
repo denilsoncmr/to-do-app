@@ -21,13 +21,13 @@ import util.ConnectionFactory;
 public class TaskController {
 
     public void save(Task task) {
-        String sql = "INSERT INTO tasks (idProject,"
-                + "name,"
-                + "description,"
-                + "completed,"
-                + "notes,"
-                + "deadline,"
-                + "createdAt,"
+        String sql = "INSERT INTO tasks (idProject, "
+                + "name, "
+                + "description, "
+                + "completed, "
+                + "notes, "
+                + "deadline, "
+                + "createdAt, "
                 + "updatedAt) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         Connection connection = null;
         PreparedStatement statement = null;

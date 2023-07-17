@@ -34,6 +34,7 @@ public class Task {
     }
     public Task(){
         this.createdAt = new Date();
+        this.updatedAt = new Date();
     }
     @Override
     public String toString() {
