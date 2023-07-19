@@ -110,17 +110,16 @@ public class ProjectController {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
             result = statement.executeQuery();
-            
-            Project project = new Project();
-            
+                        
             while(result.next()){
+                
+                Project project = new Project();
                 
                 project.setId(result.getInt("id"));
                 project.setName(result.getString("name"));
                 project.setDescription(result.getString("description"));
                 project.setCreatedAt(result.getDate("createdAt"));
                 project.setUpdatedAt(result.getDate("updatedAt"));
-                
                 projects.add(project);
                 
             }            
