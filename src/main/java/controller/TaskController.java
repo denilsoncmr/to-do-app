@@ -121,8 +121,8 @@ public class TaskController {
         try {
             connection = ConnectionFactory.getConnection();
             statement = connection.prepareStatement(sql);
+            statement.setInt(1, idProject);
             result = statement.executeQuery();
-
             while (result.next()) {
                 Task task = new Task();
 
