@@ -29,7 +29,7 @@ public class DeadlineColumnCellRenderer extends DefaultTableCellRenderer{
         TaskTableModel taskModel = (TaskTableModel) table.getModel();
         Task task = taskModel.getTasks().get(row);
         
-        Color color = (task.getDeadline().after(new Date())) ? Color.red : Color.green;
+        Color color = (task.getDeadline().after(new Date())) ? Color.green : Color.red;
         label.setBackground(color);
         
         return label;

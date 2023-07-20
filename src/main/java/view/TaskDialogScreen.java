@@ -93,7 +93,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jPanelTask.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabelName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelName.setText("Nome");
+        jLabelName.setText("Nome *");
 
         jTextFieldName.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
@@ -106,7 +106,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         jScrollPane1.setViewportView(jTextAreaDescription);
 
         jLabelDeadline.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabelDeadline.setText("Prazo");
+        jLabelDeadline.setText("Prazo *");
 
         jLabelNotes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelNotes.setText("Notas");
@@ -185,20 +185,26 @@ public class TaskDialogScreen extends javax.swing.JDialog {
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
         // TODO add your handling code here:
         try {
-            Task task = new Task();
-            task.setIdProject(project.getId());
-            task.setName(jTextFieldName.getText());
-            task.setDescription(jTextAreaDescription.getText());
-            task.setNotes(jTextAreaNotes.getText());
-            task.setIsCompleted(false);
-            //Formatando a data 
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-            Date deadline = dateFormat.parse(jFormattedTextFieldDeadline.getText());
-            task.setDeadline(deadline);
-            
-            controller.save(task);
-            JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
-            this.dispose();
+            if(jTextFieldName.getText().isEmpty() || jTextFieldName.getText().isBlank() ||
+                    jFormattedTextFieldDeadline.getText().isEmpty() ||
+                    jFormattedTextFieldDeadline.getText().isBlank()){
+                JOptionPane.showMessageDialog(rootPane, "Preencha os campos obrigatórios");
+            } else{
+                Task task = new Task();
+                task.setIdProject(project.getId());
+                task.setName(jTextFieldName.getText());
+                task.setDescription(jTextAreaDescription.getText());
+                task.setNotes(jTextAreaNotes.getText());
+                task.setIsCompleted(false);
+                //Formatando a data 
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                Date deadline = dateFormat.parse(jFormattedTextFieldDeadline.getText());
+                task.setDeadline(deadline);
+
+                controller.save(task);
+                JOptionPane.showMessageDialog(rootPane, "Tarefa salva com sucesso");
+                this.dispose();
+            }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(rootPane, "Algo deu errado! Tente novamente!");
         }
